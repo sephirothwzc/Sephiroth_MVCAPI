@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sephiroth_MVCAPI", "Sephiroth_MVCAPI\Sephiroth_MVCAPI.csproj", "{E0A6FACD-9754-478E-B56E-9CEFCC30F0BB}"
-EndProject
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{CE4E222E-BCA9-4C2D-B228-B8B77C844354}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sephiroth_WinClient", "Sephiroth_WinClient\Sephiroth_WinClient.csproj", "{9168E839-0800-451F-99BF-891CDF922973}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{DCAF9CF7-0886-4E61-8475-37C22C93C774}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sephiroth_API", "Sephiroth_API\Sephiroth_API.csproj", "{719102E3-8041-4830-AE6E-BB46DE9548C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E0A6FACD-9754-478E-B56E-9CEFCC30F0BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0A6FACD-9754-478E-B56E-9CEFCC30F0BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0A6FACD-9754-478E-B56E-9CEFCC30F0BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0A6FACD-9754-478E-B56E-9CEFCC30F0BB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CE4E222E-BCA9-4C2D-B228-B8B77C844354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CE4E222E-BCA9-4C2D-B228-B8B77C844354}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE4E222E-BCA9-4C2D-B228-B8B77C844354}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,6 +29,10 @@ Global
 		{DCAF9CF7-0886-4E61-8475-37C22C93C774}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCAF9CF7-0886-4E61-8475-37C22C93C774}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCAF9CF7-0886-4E61-8475-37C22C93C774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{719102E3-8041-4830-AE6E-BB46DE9548C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{719102E3-8041-4830-AE6E-BB46DE9548C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{719102E3-8041-4830-AE6E-BB46DE9548C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{719102E3-8041-4830-AE6E-BB46DE9548C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
