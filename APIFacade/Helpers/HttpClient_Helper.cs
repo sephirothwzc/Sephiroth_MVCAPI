@@ -92,6 +92,47 @@ namespace APIFacade
             }
         }
 
+        public static T DoGet<T>(string url)
+        {
+            string apiurl = HttpClient_Helper.GetWebAPIUrl() + url;
+
+            //设置HttpClientHandler的AutomaticDecompression
+            var handler = new HttpClientHandler()
+            {
+                AutomaticDecompression = DecompressionMethods.GZip
+            };
+            //创建HttpClient（注意传入HttpClientHandler）
+            using (var http = new HttpClient(handler))
+            {
+                ////使用FormUrlEncodedContent做HttpContent
+                //var content = new FormUrlEncodedContent(new Dictionary<string, string>()       
+                //{    {"Id","6"},
+                //     {"Name","添加zzl"},
+                //     {"Info", "添加动作"}//键名必须为空
+                // });
+
+                ////await异步等待回应
+
+                //var response = await http.PostAsync(url, content);
+                ////确保HTTP成功状态值
+                //response.EnsureSuccessStatusCode();
+                ////await异步读取最后的JSON（注意此时gzip已经被自动解压缩了，因为上面的AutomaticDecompression = DecompressionMethods.GZip）
+                //Console.WriteLine(await response.Content.ReadAsStringAsync());
+
+                //吴占超 2015年5月20日21:29:19
+
+                var task = http.GetAsync(apiurl);
+                task.Result.EnsureSuccessStatusCode();
+
+                //var result = task.Result.Content.ReadAsStringAsync();
+
+                //HttpResponseMessage response = task.Result;
+                //var x = response.Content.ReadAsStringAsync();
+                return ObjectConvertJson<T>(task.Result.Content.ReadAsStringAsync().Result);
+            }
+        }
+
+
         /// <summary>
         /// 字符串对象序列化
         /// </summary>

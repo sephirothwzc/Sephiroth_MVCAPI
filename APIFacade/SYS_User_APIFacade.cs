@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,10 +27,11 @@ namespace APIFacade
 
         public Entity.SYS_User Login(string UserCode, string PassWord)
         {
-            return HttpClient_Helper.DoPost<Entity.SYS_User>("Login", new Dictionary<string, string> { 
-                {"Usercode",UserCode},
-                {"Password",PassWord}
-            });
+            //return HttpClient_Helper.DoPost<Entity.SYS_User>(@"SYS_UserAPI/Login", new Dictionary<string, string> { 
+            //    {"Usercode",UserCode},
+            //    {"Password",PassWord}
+            //});
+            return HttpClient_Helper.DoGet<List<SYS_User>>("api/SYS_User").FirstOrDefault();
         }
 
         #endregion
