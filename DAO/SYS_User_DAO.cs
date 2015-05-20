@@ -29,6 +29,17 @@ namespace DAO
         {
             return dao.Query();
         }
+        
+        /// <summary>
+        /// 登陆
+        /// </summary>
+        /// <param name="usercode">用户编码</param>
+        /// <param name="password">密码</param>
+        /// <returns></returns>
+        public SYS_User Login(string usercode, string password)
+        {
+            return dao.Query(new SYS_User() { Usercode = usercode, Password = password }).FirstOrDefault();
+        }
 
         /// <summary>
         /// 根据主键获取对象

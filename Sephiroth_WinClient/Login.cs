@@ -1,4 +1,6 @@
-﻿using System;
+﻿using APIFacade;
+using Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +30,21 @@ namespace Sephiroth_WinClient
         public Login()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// 登陆按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Interface_BusinessAPI.Interface_SYS_User iuser = new SYS_User_APIFacade();
+            SYS_User user = iuser.Login(this.UserCode.Text, this.PassWord.Text);
+            if (user != null)
+                MessageBox.Show("登陆成功！" + user.Id);
+            else
+                MessageBox.Show("登陆失败！");
         }
     }
 }
