@@ -26,6 +26,7 @@ namespace Entity
     /// <summary>
     /// 系统用户
     /// </summary>
+    //[Serializable]
     [Table("SYS_User")]
     public class SYS_User: BaseEntity
     {

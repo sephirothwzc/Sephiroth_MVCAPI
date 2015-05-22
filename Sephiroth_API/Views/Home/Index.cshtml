@@ -1,4 +1,49 @@
-﻿<div class="jumbotron">
+﻿<input type="button" id="ipt1" value="有参数调用" /><input type="text" id="canshu" /><input type="text" id="canshu2" />
+<input type="button" id="Button1" value="无参数调用" />
+
+<script type="text/javascript">
+
+    function GetInfo() {
+        $.ajax({
+            url: "/SYS_UserAPI/login",
+            contentType: "application/json; charset=gb2312",
+            dataType: "json",
+            type: "POST",
+            data: "{Usercode:'" + $('#canshu').val() + "',Password:'" + $('#canshu2').val() + "'}",
+            dataType: "json",
+            success: function (data) {
+                alert(data.d);
+            }
+        });
+    }
+
+    function GetWord() {
+        $.ajax({
+            url: "Webservice/MES/WebService_wzc.asmx/World",
+            contentType: "application/json; charset=gb2312",
+            dataType: "json",
+            type: "GET",
+            //data:"{lan:'"+$('#canshu')+"'}",
+            dataType: "json",
+            success: function (data) {
+                alert(data.d);
+            }
+        });
+    }
+    $('#ipt1').click(function () {
+        var res = GetInfo();
+    });
+
+
+    $('#Button1').click(function () {
+        var res = GetWord();
+
+    });
+</script>
+
+
+
+<div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>

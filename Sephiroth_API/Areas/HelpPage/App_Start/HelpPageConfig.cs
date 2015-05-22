@@ -33,6 +33,9 @@ namespace Sephiroth_API.Areas.HelpPage
             Justification = "Part of a URI.")]
         public static void Register(HttpConfiguration config)
         {
+            //吴占超 增加 自动生成文档 webapi项目属性 ->生成->xml文档文件
+            config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/Areas/HelpPage/Sephiroth_API.XML")));
+
             //// Uncomment the following to use the documentation from XML documentation file.
             //config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
 

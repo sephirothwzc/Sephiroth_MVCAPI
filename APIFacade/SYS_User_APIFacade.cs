@@ -31,7 +31,12 @@ namespace APIFacade
             //    {"Usercode",UserCode},
             //    {"Password",PassWord}
             //});
-            return HttpClient_Helper.DoGet<List<SYS_User>>("api/SYS_User").FirstOrDefault();
+            //return HttpClient_Helper.DoGet<List<SYS_User>>("api/SYS_User").FirstOrDefault();
+            return HttpClient_Helper.DoPost<Entity.SYS_User>(@"SYS_UserAPI/Login", 
+                () => new Dictionary<string, string> { 
+                {"Usercode",UserCode},
+                {"Password",PassWord}
+            });
         }
 
         #endregion

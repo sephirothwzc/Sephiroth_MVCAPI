@@ -1,6 +1,7 @@
 ﻿using Entity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -46,12 +47,16 @@ namespace Sephiroth_API.Controllers.SystemAPI
         }
         #endregion 
 
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Login")]
-        public SYS_User Login(string Usercode,string Password)
+        public SYS_User Login([FromBody]SYS_User user)
         {
-            return dao.Login(Usercode, Password);
-            //return dao.Login(user.Usercode, user.Password);
+            return dao.Login(user.Usercode, user.Password);
         }
     }
 }
