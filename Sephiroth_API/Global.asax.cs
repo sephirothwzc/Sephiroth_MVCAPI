@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sephiroth_API.OAuth2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,11 @@ namespace Sephiroth_API
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        /// <summary>
+        /// OAuth2 用
+        /// </summary>
+        public static DatabaseKeyNonceStore KeyNonceStore { get; set; }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

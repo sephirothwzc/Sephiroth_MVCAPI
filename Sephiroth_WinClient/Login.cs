@@ -46,5 +46,7 @@ namespace Sephiroth_WinClient
             else
                 MessageBox.Show("登陆失败！");
         }
+
+
     }
 }

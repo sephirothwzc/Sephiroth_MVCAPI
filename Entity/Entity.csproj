@@ -63,6 +63,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OAuth2\BearerTokenHandler.cs" />
+    <Compile Include="OAuth2\DatabaseKeyNonceStore.cs" />
+    <Compile Include="OAuth2\DESCrypt.cs" />
+    <Compile Include="OAuth2\IAuthorizationState.cs" />
+    <Compile Include="OAuth2\MappingAccessToken.cs" />
+    <Compile Include="OAuth2\Models\OAuth_Client.cs" />
+    <Compile Include="OAuth2\Models\OAuth_ClientAuthorization.cs" />
+    <Compile Include="OAuth2\Models\OAuth_ClientOpenApi.cs" />
+    <Compile Include="OAuth2\Models\OAuth_Nonce.cs" />
+    <Compile Include="OAuth2\Models\OAuth_SymmetricCryptoKey.cs" />
+    <Compile Include="OAuth2\Models\SiteUser.cs" />
+    <Compile Include="OAuth2\OAuth2AuthorizationServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SYS_User.cs" />
   </ItemGroup>
