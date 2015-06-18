@@ -1,4 +1,5 @@
-﻿using DotNetOpenAuth.OAuth2;
+﻿using DotNetOpenAuth.Messaging;
+using DotNetOpenAuth.OAuth2;
 using Entity.OAuth2.Models;
 using System;
 using System.Collections.Generic;

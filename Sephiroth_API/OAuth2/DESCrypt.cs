@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAO;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,16 +22,26 @@ namespace Sephiroth_API.OAuth2
         /// <returns>加密字符串</returns>
         public static string Encrypt(string user, string clientid)
         {
-            using (var db = new OAuthDbContext())
-            {
-                var c = db.Clients.FirstOrDefault(o => o.ClientIdentifier == clientid);
-                if (c == null)
-                    throw new Exception("不受信任的商户");
-                byte[] key = ToMD5(c.ClientSecret);
-                byte[] buffer = Encoding.UTF8.GetBytes(user);
-                byte[] cipher = Encrypt(buffer, key);
-                return Convert.ToBase64String(cipher);
-            }
+            OAuth_Client_DAO oauthclient = new OAuth_Client_DAO();
+            //验证当前client用户是否存在
+            var c = oauthclient.Get(new Entity.OAuth2.Models.OAuth_Client { ClientIdentifier = clientid }).FirstOrDefault();
+            if (c == null)
+                throw new Exception("不受信任的商户");
+            byte[] key = ToMD5(c.ClientSecret);
+            byte[] buffer = Encoding.UTF8.GetBytes(user);
+            byte[] cipher = Encrypt(buffer, key);
+            return Convert.ToBase64String(cipher);
+
+            //using (var db = new OAuthDbContext())
+            //{
+            //    var c = db.Clients.FirstOrDefault(o => o.ClientIdentifier == clientid);
+            //    if (c == null)
+            //        throw new Exception("不受信任的商户");
+            //    byte[] key = ToMD5(c.ClientSecret);
+            //    byte[] buffer = Encoding.UTF8.GetBytes(user);
+            //    byte[] cipher = Encrypt(buffer, key);
+            //    return Convert.ToBase64String(cipher);
+            //}
         }
 
         /// <summary>

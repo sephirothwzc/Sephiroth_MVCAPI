@@ -1,7 +1,10 @@
-﻿using DotNetOpenAuth.Messaging.Bindings;
+﻿using DAO;
+using DotNetOpenAuth.Messaging.Bindings;
 using DotNetOpenAuth.OAuth2;
 using DotNetOpenAuth.OAuth2.ChannelElements;
 using DotNetOpenAuth.OAuth2.Messages;
+using Entity.OAuth2.Models;
+using Sephiroth_API.OAuth2.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -46,19 +49,30 @@ namespace Sephiroth_API.OAuth2
             return result;
         }
 
+        /// <summary>
+        /// 获取ClientOAuth
+        /// </summary>
+        /// <param name="clientIdentifier"></param>
+        /// <returns></returns>
         public IClientDescription GetClient(string clientIdentifier)
         {
-            using (var db = new OAuthDbContext())
-            {
-                var consumerRow = db.Clients.SingleOrDefault(
-                    consumerCandidate => consumerCandidate.ClientIdentifier == clientIdentifier);
-                if (consumerRow == null)
-                {
-                    throw new ArgumentOutOfRangeException("clientIdentifier");
-                }
+            var consumerRow = new OAuth_Client_DAO().Get(new OAuth_Client { ClientIdentifier = clientIdentifier }).SingleOrDefault();
+            if (consumerRow == null)
+                throw new ArgumentOutOfRangeException("clientIdentifier");
+            return new OAuthClientDescription(consumerRow);
+            #region 吴占超 旧版本注释
+            //using (var db = new OAuthDbContext())
+            //{
+            //    var consumerRow = db.Clients.SingleOrDefault(
+            //        consumerCandidate => consumerCandidate.ClientIdentifier == clientIdentifier);
+            //    if (consumerRow == null)
+            //    {
+            //        throw new ArgumentOutOfRangeException("clientIdentifier");
+            //    }
 
-                return new OAuthClientDescription(consumerRow);
-            }
+            //    return new OAuthClientDescription(consumerRow);
+            //}
+            #endregion 
         }
 
         public bool IsAuthorizationValid(IAuthorizationDescription authorization)

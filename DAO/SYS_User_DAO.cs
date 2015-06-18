@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Interface_Dapper;
 using Entity;
+using Interface_ORM;
 
 
 /*************************************************************************************
@@ -24,7 +25,7 @@ namespace DAO
 {
     public class SYS_User_DAO
     {
-        private Dapper_DAO<SYS_User> dao = new Dapper_DAO<SYS_User>(CreateSYSDAO.GetSephiroth_System());
+        private Interface_ORM<SYS_User> dao = new Dapper_DAO<SYS_User>(CreateSYSDAO.GetSephiroth_System());
         public IEnumerable<SYS_User> Get()
         {
             return dao.Query();
